@@ -1,0 +1,23 @@
+class Solution{
+public:
+    int maxGold(int m, int n, vector<vector<int>> goldTable)
+    {
+        // code here
+        for(int col = n-1; col >= 0; col--)
+        {
+            for(int row = 0; row < m; row++)
+            {
+                int right = (col==n-1) ? 0 : goldTable[row][col+1];
+                int right_up = (row == 0 || col == n-1) ? 0 : goldTable[row-1][col+1];
+                int right_down = (row == m-1 || col == n-1) ? 0 : goldTable[row+1][col+1];
+                goldTable[row][col] = goldTable[row][col] + max(right_up, max(right_down, right));
+            }
+        }
+        int res = 0;
+        for(int i = 0; i < m; i++)
+        {
+            res = max(res, goldTable[i][0]);
+        }
+        return res;
+    }
+};

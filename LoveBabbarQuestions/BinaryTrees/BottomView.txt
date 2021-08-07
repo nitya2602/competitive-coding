@@ -1,0 +1,22 @@
+void preorder(Node* root, map<int, pair<int, int>> &map, int dist, int level)
+{
+    if(root == NULL) return;
+    if(map.find(dist) == map.end() || map[dist].second <= level)
+    {
+        map[dist] = {root -> data, level};
+    }
+    preorder(root -> left, map, dist-1, level+1);
+    preorder(root -> right, map, dist+1, level+1);
+}
+vector <int> bottomView(Node *root)
+{
+   // Your Code Here
+   vector<int> ans;
+   map<int, pair<int, int>> map;
+   preorder(root, map, 0, 1);
+   for(auto i : map)
+   {
+       ans.push_back(i.second.first);
+   }
+   return ans;
+}

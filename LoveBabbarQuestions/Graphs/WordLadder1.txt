@@ -1,0 +1,73 @@
+//bidirectional bfs
+struct node{
+    string word;
+    int len;
+};
+
+bool isAdj(string a, string b)
+{
+    int count = 0;
+    for(int i = 0; i < a.length(); i++)
+    {
+        if(a[i] != b[i]) count++;
+        if(count > 1) return false;
+    }
+    return true;
+}
+
+int Solution::solve(string A, string B, vector<string> &C) {
+    queue<node> q1;
+    queue<node> q2;
+    unordered_map<string, int> vis1;
+    unordered_map<string, int> vis2;
+    
+    node start = {A, 1};
+    node end = {B, 1};
+    
+    vis1[A] = 1;
+    q1.push(start);
+    vis2[B] = 1;
+    q2.push(end);
+    
+    while(!q1.empty() && !q2.empty())
+    {
+        node curr1 = q1.front();
+        q1.pop();
+        
+        node curr2 = q2.front();
+        q2.pop();
+        
+        for(auto i : C)
+        {
+            if(isAdj(curr1.word, i) && vis1.count(i) == 0)
+            {
+                node temp = {i, curr1.len + 1};
+                q1.push(temp);
+                vis1[i] = curr1.len + 1;
+                if(temp.word == B)
+                    return temp.len;
+                if(vis2.count(temp.word))
+                {
+                    return temp.len + vis2[temp.word] - 1;
+                }
+            }
+        }
+        
+        for(auto i : C)
+        {
+            if(isAdj(curr2.word, i) && vis2.count(i) == 0)
+            {
+                node temp = {i, curr2.len+1};
+                q2.push(temp);
+                vis2[i] = curr2.len + 1;
+                if(temp.word == A)
+                    return temp.len;
+                if(vis1.count(temp.word))
+                {
+                    return temp.len + vis1[temp.word] - 1;
+                }
+            }
+        }
+    }
+    return 0;
+}

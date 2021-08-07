@@ -1,0 +1,79 @@
+class Solution
+{
+    public:
+    //Function to find largest rectangular area possible in a given histogram.
+    long long getMaxArea(long long arr[], int n)
+    {
+        // Your code here
+        vector<long long> left(n);
+        left[0] = -1;
+        vector<long long> right(n);
+        right[n-1] = n;
+        stack<int> stackLeft;
+        stackLeft.push(0);
+        stack<int> stackRight;
+        stackRight.push(n-1);
+        for(int i = 1; i < n; i++)
+        {
+            if(stackLeft.empty())
+            {
+                left[i] = 0;
+            }
+            else if(arr[stackLeft.top()] < arr[i])
+            {
+                left[i] = stackLeft.top();
+            }
+            else
+            {
+                while(!stackLeft.empty() && arr[stackLeft.top()] >= arr[i])
+                {
+                    stackLeft.pop();
+                }
+                if(stackLeft.empty())
+                {
+                    left[i] = -1;
+                }
+                else
+                {
+                    left[i] = stackLeft.top();
+                }
+            }
+            stackLeft.push(i);
+        }
+        
+        for(int i = n-2; i >= 0; i--)
+        {
+            if(stackRight.empty())
+            {
+                right[i] = n;
+            }
+            else if(arr[stackRight.top()] < arr[i])
+            {
+                right[i] = stackRight.top();
+            }
+            else
+            {
+                while(!stackRight.empty() && arr[stackRight.top()] >= arr[i])
+                {
+                    stackRight.pop();
+                }
+                if(stackRight.empty())
+                {
+                    right[i] = n;
+                }
+                else
+                {
+                    right[i] = stackRight.top();
+                }
+            }
+            stackRight.push(i);
+        }
+        long long ans = 0;
+        for(int i = 0; i < n; i++)
+        {
+            //cout<<left[i]<<" "<<right[i]<<endl;
+            ans = max(ans, (right[i]-left[i]-1)*arr[i]);
+        }
+        return ans;
+    }
+};

@@ -1,0 +1,30 @@
+//recursive implementation
+class Solution{
+  public:
+    /*You are required to complete this method*/
+    bool checkUtil(Node* root, int &leafLevel, int level)
+    {
+        if(root == NULL)
+            return true;
+        if(root -> left == NULL && root -> right == NULL)
+        {
+            if(leafLevel == -1)
+            {
+                leafLevel = level;
+            }
+            else
+            {
+                return (level == leafLevel);
+            }
+        }
+        return checkUtil(root->left, leafLevel, level+1) &&
+                checkUtil(root->right, leafLevel, level+1);
+    }
+    
+    bool check(Node *root)
+    {
+        //Your code here
+        int leafLevel = -1;
+        return checkUtil(root, leafLevel, 1);
+    }
+};

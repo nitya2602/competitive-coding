@@ -1,0 +1,39 @@
+-My weakness : not good attention to detail or tend to rush at times
+	missing important points but this helps me to execute quickly.
+	I make sure to get my work double checked
+
+-Questions for interviewer : 
+  1. What brought you to this company? What has been most challenging 
+	to you?
+  2. I'm very interested in scalability and would love to learn more
+	about it. What opportunities are there at company for this.
+  3. Some company specific question
+
+-Situational Questions
+ Nugget first, SAR(Situation, Action, Result) - Focus more on action
+ Check Pg48 once
+
+-Don't code brute force approach. Build nice examples for a problem. 
+-Start by sharing brute force solution.
+-Keep hash tables on top of the mind.
+-BUD (Bottlenecks, Unnecessary Work, Duplicated Work)
+
+-DO IT YOURSELF : Try to think how you would solve the problem manually and what subconscious optimizations were made by you.
+(finding all permutations of s in b)
+
+-SIMPLIFY AND GENERALIZE : try solving for a simpler version first, then adapt the solution to the more complex problem.
+(ransom note in a magazine)
+
+-BASE CASE AND BUILD : Solve for a base case and from there build solution for more interesting cases
+(generate all permutations of a string)
+
+-DATA STRUCTURE BRAINSTORM : Try applying all data structures to the problem one by one and then pick the most suitable one.
+(keep track of median when numbers are randomly generated)
+
+-BEST CONCEIVABLE RUNTIME - It can offer some useful hint for some problem.
+
+-Always try to derive the runtime rather than guessing it.
+
+-We can presume some utility/simple methods that we don't actually have (like transposing a matrix).
+
+-Use data structures generously. Like defining a structure for graphs or tree nodes

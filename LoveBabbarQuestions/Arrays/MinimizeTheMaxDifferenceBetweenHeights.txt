@@ -1,0 +1,55 @@
+//O(nlogn) solution
+
+class Solution {
+  public:
+    int getMinDiff(int arr[], int n, int k) {
+        // code here
+        vector<pair<int, int>> heights;
+        for(int i = 0; i < n; i++)
+        {
+            heights.push_back({arr[i]+k, i});
+            if(arr[i] >= k)
+                heights.push_back({arr[i]-k, i});
+        }
+        sort(heights.begin(), heights.end());
+        int left = 0, right = 0;
+        int elements_in_range = 0;
+        vector<int> visited(n, 0);
+        
+        while(elements_in_range < n && right < heights.size())
+        {
+            if(visited[heights[right].second] == 0)
+            {
+                elements_in_range++;
+            }
+            visited[heights[right].second]++;
+            right++;
+        }
+        
+        int ans = heights[right-1].first - heights[left].first;
+        while(right < heights.size())
+        {
+            if(visited[heights[left].second] == 1)
+            {
+                elements_in_range--;
+            }
+            visited[heights[left].second]--;
+            left++;
+            while(elements_in_range < n && right < heights.size())
+            {
+                if(visited[heights[right].second] == 0)
+                {
+                    elements_in_range++;
+                }
+                visited[heights[right].second]++;
+                right++;
+            }
+            if(elements_in_range == n)
+            {
+                ans = min(ans, heights[right-1].first - heights[left].first);
+            }
+            else break;
+        }
+        return ans;
+    }
+};

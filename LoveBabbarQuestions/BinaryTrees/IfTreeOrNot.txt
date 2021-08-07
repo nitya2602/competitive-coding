@@ -1,0 +1,3 @@
+Check 2 things - 
+1. Whether graph is cyclic or not
+2. If graph is connected

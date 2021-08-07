@@ -1,0 +1,21 @@
+int postorder(Node* root, bool &flag)
+{
+    if(root == NULL)
+    {
+        return 0;
+    }
+    int left = postorder(root -> left, flag);
+    int right = postorder(root -> right, flag);
+    if(abs(left - right) > 1)
+    {
+        flag = false;
+    }
+    return max(left, right) + 1;
+}
+bool isBalanced(Node *root)
+{
+    //  Your Code here
+    bool flag = true;
+    int temp = postorder(root, flag);
+    return flag;
+}

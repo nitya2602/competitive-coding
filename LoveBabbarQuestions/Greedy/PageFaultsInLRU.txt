@@ -1,0 +1,46 @@
+//Time complexity - O(N*C)
+//N - number of pages, C - capacity of memory
+//Space complexity - O(N)
+
+class Solution{
+public:
+    int pageFaults(int N, int C, int pages[]){
+        // code here
+        unordered_set<int> set;
+        unordered_map<int, int> map;
+        
+        int faults = 0;
+        for(int i = 0; i < N; i++)
+        {
+            if(set.size() < C)
+            {
+                if(set.find(pages[i]) == set.end())
+                {
+                    set.insert(pages[i]);
+                    faults++;
+                }
+                map[pages[i]] = i;
+            }
+            else 
+            {
+                if(set.find(pages[i]) == set.end())
+                {
+                    int lru = INT_MAX, val;
+                    for(auto it = set.begin(); it != set.end(); it++)
+                    {
+                        if(map[*it] < lru)
+                        {
+                            lru = map[*it];
+                            val = *it;
+                        }
+                    }
+                    set.erase(val);
+                    set.insert(pages[i]);
+                    faults++;
+                }
+                map[pages[i]] = i;
+            }
+        }
+        return faults;
+    }
+};

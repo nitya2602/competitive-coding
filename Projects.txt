@@ -1,0 +1,13 @@
+-Points to prepare about a project : 
+	1. Challenges
+	2. Mistakes/Failures
+	3. Enjoyed
+	4. Leadership
+	5. Conflicts
+	6. What You'd Do Differently
+	7. Technical decisions and technology used (and tradeoffs of these)
+	8. How to scale it
+
+-Prepare technical details of 1-3 projects nicely
+
+-Use 'I' instead of 'we'

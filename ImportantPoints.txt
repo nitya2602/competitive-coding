@@ -1,0 +1,39 @@
+-An ArrayList is implemented with an array. When the array hits capacity, the ArrayList will create a new array with double the capacity and copy all the elements over to the new array. X insertions take O(2X) time but amortized time for each insertion is O(1).
+
+-In a problem where number of elements in problem space gets halved each time, it will likely be O(logN) runtime. eg.finding an element in a binary search tree
+Base of log does not matter for the purposes of big O.
+
+-When a recursive function makes multiple calls, runtime often looks like (not always), O(branches^depth). Unlike log, base for exponential time complexity matters.
+
+-Time complexity for sorting an array of strings - a*s(loga + logs) where a = size of array, s = size of string.
+
+-Don't tell O(sqrt(n)) as O(n).
+
+-Huffman coding is a lossless data compression algorithm
+
+-Two different trees can have same inorder traversal. Pre-order traversal of a tree is unique as long as we represent NULL nodes. So if two trees have same preorder traversal, they are identical in values and structure.
+
+-https://stackoverflow.com/questions/7477181/array-based-vs-list-based-stacks-and-queues  go through this link
+
+-for questions based on linked lists, take care of corner cases like checking if list is empty
+
+-Time complexity of printing all permutations - Cracking The Coding Interview (Pg 63)
+
+-Don't always assume that it is a binary tree, be clear whether it's binary or ternary
+
+-Heaps are complete binary trees
+
+-BFS is a better option when trying to find out a path from one friend to another
+
+-Bidirectional search - Run BFS from both source and destination to find the shortest path between source and destination
+
+-In merge sort main sorting takes place in combine part whereas in quick sort main sorting takes place in divide step. Conquer step is pretty much same for both of them
+
+-For small size problems, insertion sort is better than quick sort because quick sort is recursive
+
+-O(D) is a better description of runtime than O(logN) whether the tree is balanced or not.
+
+-All recursive algorithms can be implemented iteratively although sometimes code to do so is much more complex.
+
+-Sub array is always continuous
+ 

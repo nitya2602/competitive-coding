@@ -1,0 +1,37 @@
+//produce permutations in sorted order, all permutations should be unique, input array contains duplicates
+//Time complexity - O(N*N!)
+//Space complexity - O(N)
+
+class Solution {
+public:
+    void util(map<int, int> &map, vector<vector<int>> &ans, vector<int> &temp, int n)
+    {
+        if(temp.size() == n)
+        {
+            ans.push_back(temp);
+        }
+        for(auto ele : map)
+        {
+            if(ele.second != 0)
+            {
+                temp.push_back(ele.first);
+                map[ele.first]--;
+                util(map, ans, temp, n);
+                map[ele.first]++;
+                temp.pop_back();
+            }
+        }
+    }
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        map<int, int> map;
+        for(auto i : nums)
+        {
+            map[i]++;
+        }
+        int n = nums.size();
+        vector<vector<int>> ans;
+        vector<int> temp;
+        util(map, ans, temp, n);
+        return ans;
+    }
+};

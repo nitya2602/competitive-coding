@@ -1,0 +1,23 @@
+vector<vector<int>> uniqueRow(int M[MAX][MAX],int row,int col)
+{
+//Your code here
+unordered_map<string, int> map;
+vector<vector<int>> ans;
+for(int i = 0; i < row; i++)
+{
+    string str = "";
+    for(int j = 0; j < col; j++)
+    {
+        str += (M[i][j]) ? '1' : '0';
+    }
+    if(map.find(str) != map.end()) continue;
+    map[str] = i;
+    vector<int> temp;
+    for(int k = 0; k < col; k++)
+    {
+        temp.push_back(M[i][k]);
+    }
+    ans.push_back(temp);
+}
+return ans;
+}

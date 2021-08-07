@@ -1,0 +1,35 @@
+class Solution {
+public:
+    bool isSafe(int x, int y, vector<vector<int>> &image, vector<vector<bool>> &visited, int num)
+    {
+        if(x<0 || x>=image.size() || y<0 || y>=image[0].size() || visited[x][y] || image[x][y] != num)
+            return false;
+        return true;
+    }
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) {
+        int X[] = {1, -1, 0, 0};
+        int Y[] = {0, 0, -1, 1};
+        vector<vector<bool>> visited(image.size(), vector<bool>(image[0].size(), false));
+        queue<pair<int, int>> q;
+        q.push({sr, sc});
+        visited[sr][sc] = true;
+        int num = image[sr][sc];
+        while(!q.empty())
+        {
+            pair<int, int> p = q.front();
+            q.pop();
+            image[p.first][p.second] = newColor;
+            for(int i = 0; i < 4; i++)
+            {
+                int x = p.first + X[i];
+                int y = p.second + Y[i];
+                if(isSafe(x, y, image, visited, num))
+                {
+                    visited[x][y] = true;
+                    q.push({x, y});
+                }
+            }
+        }
+        return image;
+    }
+};

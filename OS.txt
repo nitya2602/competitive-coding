@@ -1,0 +1,56 @@
+-Windows is multitasking OS. Multiuser OS is an OS that allows multiple users on different computers or terminals to access a single system with one OS on it.
+
+-Deadlock - Two or more processes are waiting indefinitely for an event that can be caused by only one of the waiting processes. A set of blocked processes each holding a resource and waiting to acquire a resource held by another process
+
+-Starvation - Indefinite blocking. A process may never be removed from the semaphore queue in which it is suspended.
+
+-Dining philosopher's problem - using semaphores and monitor
+-Producer consumer problem - Semaphores and mailbox
+-Readers writers problem - semaphores
+
+-Semaphore - OS support for synchronization, a tool that does not require busy waiting. wait and signal are atomic processes
+
+-Synchronization: Mutual exclusion, progress and bounded waiting
+
+-Conditions for deadlock: Mutual exclusion, hold and wait, no preemption, circular wait
+
+-FCFS - Convoy effect(penalizes short processes)
+
+-SJF - Shortest process next(non preemptive, long processes might starve), Shortest remaining time first(srtf), SJF gives min average waiting time for a set of processes (it is optimal)
+
+-Round Robin - Higher average turnaround time than SJF but better response, unfair to i/o bound processes. Virtual round robin with an auxiliary queue
+
+-Highest response ratio next(HRNN) - non preemptive, uses normalised turnaround time
+
+-Fair share scheduling
+
+Memory Management
+
+-Fixed partitioning
+ -Equal sized - a lot of space may be wasted if program is small and if it is too large, we need to write overlays
+  -Unequal size - Program is loaded into best fit partition, queue for each partition
+
+-Dynamic partitioning - External fragmentation, first fit, next fit and best fit perform better than worst fit in terms of speed and storage utilization, we need to do compaction
+
+-Buddy system - A compromise to overcome shortcoming of fixed and variable partitioning scheme
+
+-Paging(Dynamic partitioning) - logical address space is divided into pages and physical into frames, sizeof(page) = sizeof(frame) for a system
+
+-Translation look-aside buffers or associative registers -> These are fast lookup hardware cache
+
+-Segmentation - Memory management scheme that supports user view of memory
+
+-Page replacement algorithms:
+ -FIFO(First in first out) - page faults decrease with increase in number of frames but here we have Belady's anomaly
+ -Optimal algorithm - It is used to measure how well an algorithm performs
+ -Least recently used (LRU) - keep a stack of page numbers in a double link form and when a page is referenced, move it to the top
+
+-Thrashing - A process is busy swapping pages in and out. More pronounced for global page replacement policies
+
+-Seek time is the time for the disk arm to move the
+heads to the cylinder containing the desired sector.
+
+-Rotational latency is the additional time waiting for the
+disk to rotate the desired sector to the disk head.
+
+-Disk scheduling alogorithms: FCFS, SSTF(a form of SJF scheduling, Shortest seek time first, can cause starvation), SCAN(elevator algorithm), C-SCAN(gives more uniform wait time than SCAN), C-LOOK

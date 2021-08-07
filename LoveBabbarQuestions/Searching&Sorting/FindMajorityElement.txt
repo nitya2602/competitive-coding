@@ -1,0 +1,31 @@
+//moore's voting algorithm
+int majorityElement(int a[], int size)
+{
+    // your code here
+    int count = 1, ele = a[0];
+    int times = size/2;
+    for(int i = 1; i < size; i++)
+    {
+        if(a[i] == ele)
+        {
+            count++;
+        }
+        else
+        {
+            if(count == 0)
+            {
+                count = 1;
+                ele = a[i];
+            }
+            else count--;
+        }
+    }
+    if(count <= 0) return -1;
+    count = 0;
+    for(int i = 0; i < size; i++)
+    {
+        if(a[i] == ele) count++;
+    }
+    if(count > times) return ele;
+    return -1;
+}

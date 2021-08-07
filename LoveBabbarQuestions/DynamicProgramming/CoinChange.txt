@@ -1,0 +1,22 @@
+class Solution
+{
+  public:
+    long long int count( int S[], int m, int n )
+    {
+       
+        //code here.
+        vector<long long> ways(n+1, 0);
+        ways[0] = 1;
+        for(int i = 0; i < m; i++)
+        {
+            for(int j = 0; j <= n; j++)
+            {
+                if(S[i] <= j)
+                {
+                    ways[j] = ways[j-S[i]] + ways[j];
+                }
+            }
+        }
+        return ways[n];
+    }
+};

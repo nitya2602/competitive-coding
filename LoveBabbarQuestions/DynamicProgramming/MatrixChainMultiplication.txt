@@ -1,0 +1,33 @@
+//O(n^2) method does not work for all test cases.
+//so we follow O(n^3) approach
+//Abdul Bari's YouTube video is nice
+class Solution{
+public:
+    int matrixMultiplication(int N, int p[])
+    {
+        // code here
+        int m[N][N];
+        int i, j, k, L, q;
+        
+        for(i = 1; i < N; i++)
+        {
+            m[i][i] = 0;
+        }
+        for(L = 2; L < N; L++)
+        {
+            for(i = 1; i < N - L + 1; i++)
+            {
+                j = i + L - 1;
+                m[i][j] = INT_MAX;
+                for(k = i; k <= j - 1; k++)
+                {
+                    q = m[i][k] + m[k+1][j] + p[i-1]*p[k]*p[j];
+                    if(q < m[i][j])
+                        m[i][j] = q;
+                }
+            }
+        }
+        return m[1][N - 1];
+    }
+};
+

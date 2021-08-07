@@ -1,0 +1,58 @@
+//recursive implementation - can do w/o map also (see gfg)
+/**
+ * Definition for binary tree
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+vector<int> Solution::postorderTraversal(TreeNode* A) {
+    vector<int> ans;
+    stack<TreeNode*> s1, s2;
+    s1.push(A);
+    while(!s1.empty())
+    {
+        TreeNode* node = s1.top();
+        s1.pop();
+        s2.push(node);
+        if(node -> left)
+            s1.push(node -> left);
+        if(node -> right)
+            s1.push(node -> right);
+    }
+    while(!s2.empty())
+    {
+        ans.push_back(s2.top() -> val);
+        s2.pop();
+    }
+    return ans;
+}
+
+//////////////////////////////////////////////////////////////////////
+//iterative solution
+vector<int> leftView(Node *root)
+{
+   // Your code here
+   vector<int> ans;
+   if(root == NULL) return ans;
+   queue<Node*> q;
+   q.push(root);
+   while(!q.empty())
+   {
+       int len = q.size();
+       for(int i = 0; i < len; i++)
+       {
+           Node* node = q.front();
+           q.pop();
+           if(i == 0)
+           {
+               ans.push_back(node -> data);
+           }
+           if(node -> left) q.push(node -> left);
+           if(node -> right) q.push(node -> right);
+       }
+   }
+   return ans;
+}

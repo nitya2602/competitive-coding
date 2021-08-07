@@ -1,0 +1,40 @@
+class Solution
+{
+    public: 
+    //Function to convert binary tree to doubly linked list and return it.
+    Node * bToDLL(Node *root)
+    {
+        // your code here
+        Node* head = NULL;
+        Node* ans = NULL;
+        stack<Node*> s;
+        Node* curr = root;
+        while(!s.empty() || curr!=NULL)
+        {
+            while(curr != NULL)
+            {
+                s.push(curr);
+                curr = curr -> left;
+            }
+            curr = s.top();
+            s.pop();
+            if(head == NULL)
+            {
+                head = curr;
+                ans = curr;
+                curr -> left = NULL;
+                curr = curr -> right;
+            }
+            else
+            {
+                head -> right = curr;
+                curr -> left = head;
+                head = curr;
+                curr = curr -> right;
+            }
+        }
+        if(head == NULL) return head;
+        head -> right = NULL;
+        return ans;
+    }
+};

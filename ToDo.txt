@@ -1,0 +1,23 @@
+-Implementation of data structures:
+	Linked Lists
+	Trees
+	Tries
+	Graphs
+	Heaps (DSA slides)
+	Vectors/ArrayLists
+	HashTables
+-Algorithms:
+	BFS
+	DFS
+	Binary Search
+	Merge Sort
+	Quick Sort
+-Concepts:
+	Bit Manipulation
+	Memory (Stack vs Heap)
+	Recursion
+	DP
+	Big O Time & Spaces
+
+-Nabagata github repository for subjects
+-If n rooms are given and meeting start and end times, how many meetings can be scheduled?

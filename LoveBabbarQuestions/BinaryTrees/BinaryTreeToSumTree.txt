@@ -1,0 +1,21 @@
+class Solution {
+  public:
+  
+    // Convert a given tree to a tree where every node contains sum of values of
+    // nodes in left and right subtrees in the original tree
+    int postorder(Node* root)
+    {
+        if(root == NULL)
+            return 0;
+        int left = postorder(root -> left);
+        int right = postorder(root -> right);
+        int sum = left + right + root -> data;
+        root -> data = left + right;
+        return sum;
+    }
+    void toSumTree(Node *node)
+    {
+        // Your code here
+        postorder(node);
+    }
+};
